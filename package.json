@@ -7,6 +7,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "avoscloud-sdk": "^0.6.10",
+    "leancloud-storage": "^2.2.1",
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.4",
     "react-navigation": "^1.0.0-beta.9"
