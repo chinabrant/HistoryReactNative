@@ -11,6 +11,10 @@ export default class HomeStoryCell extends Component {
 
 
 	render() {
+{
+		console.log('=================================');
+		console.log(this.props.rowData);
+	}
 
 		let img = null;
 		if (this.props.rowData.image !== undefined && this.props.rowData.image !== '') {
@@ -29,9 +33,9 @@ export default class HomeStoryCell extends Component {
 			
 			<View style={styles.rightContainer}>
 
-				<Text>{this.props.rowData.title}</Text>
+				<Text>{this.props.rowData._serverData.title}</Text>
 				<View style={styles.cateContainer}>
-					<Text style={styles.cate}>{this.props.rowData.cate}</Text>
+					<Text style={styles.cate}>{this.props.rowData._serverData.category}</Text>
 					<View style={{flex: 1}}></View>
 					<Text style={styles.time}>{this.props.rowData.time}</Text>
 				</View>
