@@ -62,10 +62,6 @@ export default class HomeScene extends Component {
 		query.descending('sortId');
 		query.find().then((results) => {
 
-			for (var i = 0; i < results.length; i++) {
-				results[i].key = results[i]._serverData.title;
-			};
-
 			this.setState({
 				dataList: (this.page === 0) ? results : this.state.dataList.concat(results),
 			});
@@ -103,14 +99,8 @@ export default class HomeScene extends Component {
 	_toEnd() {
 
           //ListView滚动到底部，根据是否正在加载更多 是否正在刷新 是否已加载全部来判断是否执行加载更多
-
-
-          this._loadMoreData();
-
-          
+          this._loadMoreData();        
      }
-
-	
 
     _renderFooter() {
           
@@ -131,64 +121,22 @@ export default class HomeScene extends Component {
 
 			<View style={styles.container}>
 
-			<AnimatedFlatList
+				<AnimatedFlatList
 
-  				data={this.state.dataList}
-  				renderItem={this.renderItemView}
-				renderFooter={ this._renderFooter.bind(this) }
-				onEndReached={ this._toEnd.bind(this) }
-                onEndReachedThreshold={10}
-  				refreshControl={
-						<RefreshControl
-	                    refreshing={false}
-	                    onRefresh={this._refreshData.bind(this)}
-	                />}
+	  				data={this.state.dataList}
+	  				renderItem={this.renderItemView}
+					renderFooter={ this._renderFooter.bind(this) }
+					onEndReached={ this._toEnd.bind(this) }
+	                onEndReachedThreshold={10}
+	  				refreshControl={
+							<RefreshControl
+		                    refreshing={false}
+		                    onRefresh={this._refreshData.bind(this)}
+		                />}
 
-			/>
+				/>
 			</View>
 
-			// <AnimatedFlatList
-   //        // ItemSeparatorComponent={SeparatorComponent}
-   //        // ListHeaderComponent={HeaderComponent}
-   //        // ListFooterComponent={FooterComponent}
-   //        data={this.state.dataSource}
-   //        debug={this.state.debug}
-   //        disableVirtualization={!this.state.virtualized}
-   //        getItemLayout={this.state.fixedHeight ?
-   //          this._getItemLayout :
-   //          undefined
-   //        }
-   //        horizontal={this.state.horizontal}
-   //        key={(this.state.horizontal ? 'h' : 'v') +
-   //          (this.state.fixedHeight ? 'f' : 'd')
-   //        }
-   //        legacyImplementation={false}
-   //        numColumns={1}
-   //        onRefresh={this._onRefresh}
-   //        onScroll={this.state.horizontal ? this._scrollSinkX : this._scrollSinkY}
-   //        onViewableItemsChanged={this._onViewableItemsChanged}
-   //        ref={this._captureRef}
-   //        refreshing={false}
-   //        renderItem={this._renderItemComponent}
-   //        shouldItemUpdate={this._shouldItemUpdate}
-   //        viewabilityConfig={VIEWABILITY_CONFIG}
-   //      />
-			
-				// <ListView
-				// 	refreshControl={
-				// 		<RefreshControl
-	   //                  refreshing={false}
-	   //                  onRefresh={this._refreshData.bind(this)}
-	   //              />}
-
-	   //              onEndReached={ this._toEnd.bind(this) }
-    //                 onEndReachedThreshold={10}
-				// 	automaticallyAdjustContentInsets={false}
-				// 	dataSource={this.state.dataSource}
-				// 	renderRow={ (rowData) => <HomeStoryCell rowData={rowData} />}
-				// 	renderFooter={ this._renderFooter.bind(this) }
-				// />
-			// </View>
 		);
 	}
 }
